@@ -5,7 +5,7 @@ async function main() {
   const { chromium, firefox, webkit } = playwright;
   for (const browserType of [chromium, firefox, webkit]) {
     // launch browser
-    const browser = await browserType.launch({ headless: false });
+    const browser = await browserType.launch({ headless: false, slowMo: 3000 });
     // create context
     const context = await browser.newContext();
     // create page
