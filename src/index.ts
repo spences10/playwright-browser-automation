@@ -5,7 +5,7 @@ async function main() {
   const { chromium, firefox, webkit } = playwright;
   for (const browserType of [chromium, firefox, webkit]) {
     // launch browser
-    const browser = await browserType.launch();
+    const browser = await browserType.launch({ headless: false });
     // create context
     const context = await browser.newContext();
     // create page
@@ -13,7 +13,7 @@ async function main() {
 
     // do things with the browser
     await page.goto(`https://scottspence.com`);
-    await page.screenshot({ path: `output/${playwright.chromium.name()}.png` });
+    await page.screenshot({ path: `output/${browserType.name()}.png` });
 
     // close the browser
     await browser.close();
